@@ -39,15 +39,10 @@ h1 {
 	animation: animate 0.5s ease-in-out;
 }
 
-/* chrome, safari, opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
-}
-
-input[type="number"] {
-	-moz-appearance: textfield;
 }
 
 .text-2xl-bold {
@@ -58,14 +53,12 @@ input[type="number"] {
 .text-3xl-bold {
 	font-size: 1.875rem;
 	font-weight: 700;
-  color: #02a826; /* Change color of total result */
+  color: #02a826;
 }
 
 .total-label {
-  color: #02a826; /* Change color of total label */
+  color: #02a826;
 }
-
-
 
 .input {
 	border: 2px solid #d1d5db;
