@@ -25,8 +25,8 @@ function calculate() {
     alert("Bill cannot be zero");
   }
   else if (people.value > 1) {
-    tipAmount.innerHTML = `₹${tipAmountPerPerson.toFixed(2)}`;
-    total.innerHTML = `₹${totalPerPerson.toFixed(2)}`;
+    tipAmount.innerHTML = `₱${tipAmountPerPerson.toFixed(2)}`;
+    total.innerHTML = `₱${totalPerPerson.toFixed(2)}`;
     perPerson.forEach((person) => {
       person.classList.remove("hidden");
     });
@@ -36,8 +36,8 @@ function calculate() {
       result.classList.remove("animate");
     }, 500);
   } else {
-    tipAmount.innerHTML = `₹${tipAmountValue.toFixed(2)}`;
-    total.innerHTML = `₹${totalValue.toFixed(2)}`;
+    tipAmount.innerHTML = `₱${tipAmountValue.toFixed(2)}`;
+    total.innerHTML = `₱${totalValue.toFixed(2)}`;
     perPerson.forEach((person) => {
       person.classList.add("hidden");
     });
@@ -50,6 +50,14 @@ function calculate() {
 
 }
 
+document.querySelectorAll('.fixed-tip').forEach(button => {
+  button.addEventListener('click', (event) => {
+    const tipPercentage = event.target.getAttribute('data-tip');
+    tip.value = `${tipPercentage}%`;
+    calculate();
+  });
+});
+
 tipDecrement.addEventListener("click", () => {
   let tipValue = tip.value;
   let tipPercentage = tipValue.slice(0, tipValue.length - 1);
@@ -57,6 +65,7 @@ tipDecrement.addEventListener("click", () => {
     tipPercentage--;
     tip.value = `${tipPercentage}%`;
   }
+  calculate();
 });
 
 tipIncrement.addEventListener("click", () => {
@@ -66,16 +75,19 @@ tipIncrement.addEventListener("click", () => {
     tipPercentage++;
     tip.value = `${tipPercentage}%`;
   }
+  calculate();
 });
 
 peopleDecrement.addEventListener("click", () => {
   if (people.value > 1) {
     people.value--;
   }
+  calculate();
 });
 
 peopleIncrement.addEventListener("click", () => {
   people.value++;
+  calculate();
 });
 
 bill.addEventListener("input", () => {
@@ -90,18 +102,6 @@ people.addEventListener("input", () => {
   calculate();
 });
 
-tipDecrement.addEventListener("click", () => {
-  calculate();
-});
-
-tipIncrement.addEventListener("click", () => {
-  calculate();
-});
-
-peopleDecrement.addEventListener("click", () => {
-  calculate();
-});
-
-peopleIncrement.addEventListener("click", () => {
-  calculate();
+bill.addEventListener("focus", () => {
+  bill.value = "";
 });
